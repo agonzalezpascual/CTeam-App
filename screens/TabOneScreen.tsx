@@ -18,15 +18,15 @@ export default function TabOneScreen({
       <Text style={styles.title}>
         Bienvenido a la aplicacion de la stacking pool ORION
       </Text>
-	  
+    
         <Text style={styles.subtitle}>
           El proyecto ORION es una novedosa forma de operar con criptodivisas.
-          <br></br>
+          {"\n"}
           Nuestra principal preocupación es acercar al usuario al mundo de las criptomonedas de la manera más fácil y sencilla posible...
           ¡¡Y también de la más rentable!! Empieza ahora mismo creándote una cuenta, o mira nuestro FAQ si quieres más información sobre el proyecto
         </Text>
-		<StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
-		<StatusBar style={Platform.OS === 'android' ? 'light' : 'auto'} />
+    <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+    <StatusBar style={Platform.OS === 'android' ? 'light' : 'auto'} />
     </View>
   );
 }
@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: "10%",
-	marginLeft: "10%",
-	marginTop: "10px",
+  marginLeft: "10%",
+  marginTop: "10px",
   },
   separator: {
     marginVertical: 30,
