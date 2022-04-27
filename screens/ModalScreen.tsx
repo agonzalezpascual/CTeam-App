@@ -1,24 +1,30 @@
 import { StatusBar } from "expo-status-bar";
-import { Platform, StyleSheet, Pressable } from "react-native";
+import { Platform, StyleSheet, Pressable, SafeAreaView, ScrollView, Image } from "react-native";
 import {
   RootStackParamList,
   RootTabParamList,
   RootTabScreenProps,
 } from "../types";
-import EditScreenInfo from "../components/EditScreenInfo"; // provatropa shur 😉
-import { Text, View } from "../components/Themed"; // provatropa shur 😉
-import { MonoText } from "../components/StyledText"; // provatropa shur 😉
-import { FontAwesome } from "@expo/vector-icons"; // provatropa shur 😉
-import { FAQText } from "../components/FAQList"; // provatropa shur 😉
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"; // provatropa shur 😉
+
+import { Text, View } from "../components/Themed";
+import { FontAwesome } from "@expo/vector-icons";
+import { FAQText } from "../components/FAQList";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 export default function ModalScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>FAQ</Text>
+		<Image
+        style={{ width: 100, height: 100 }}
+		resizeMode="stretch"
+        source={require("../assets/images/cardanocoin.png")}
+      />
+      <Text style={styles.title}>F.A.Q.</Text>
       <View style={styles.bloque}>
-        <FAQText style={{ width: 620 }}>
+	  <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.scrollView}>
+        <FAQText style={styles.subtitle}>
           <Text style={styles.subtitle1}>
             ¿Quién conforma el proyecto ORION?
           </Text>
@@ -28,7 +34,7 @@ export default function ModalScreen() {
           </Text>
         </FAQText>
 
-        <FAQText style={{ width: 620 }}>
+        <FAQText style={styles.subtitle}>
           <Text style={styles.subtitle1}>
             ¿Qué nos llevó a desarrollar este proyecto?
           </Text>
@@ -38,7 +44,7 @@ export default function ModalScreen() {
           </Text>
         </FAQText>
 
-        <FAQText style={{ width: 620 }}>
+        <FAQText style={styles.subtitle}>
           <Text style={styles.subtitle1}>
             ¿En qué se basa el proyecto ORION?
           </Text>
@@ -49,20 +55,20 @@ export default function ModalScreen() {
           </Text>
         </FAQText>
 
-        <FAQText style={{ width: 620 }}>
+        <FAQText style={styles.subtitle}>
           <Text style={styles.subtitle1}>
             He escuchado que el proyecto ORION está concienciado con el medio
-            ambiente ¿Es esto verdad?
+            ambiente ¿Es esto cierto?
           </Text>
           <Text style={styles.subtitle2}>
             {"\n"}Sí, los integrantes de ORION tenemos una gran consciencia
-            medioambiental, esta es una de las razones por la que elegimos
-            Cardano, es una de las criptomonedas más respetuiosas con el medio
+            medioambiental... ¡incluso tenemos un miembro vegano! Esta es una de las razones por la que elegimos
+            Cardano, es una de las criptomonedas más respetuosas con el medio
             ambiente.
           </Text>
         </FAQText>
 
-        <FAQText style={{ width: 620 }}>
+        <FAQText style={styles.subtitle}>
           <Text style={styles.subtitle1}>
             ¿Cuánto podría esperar ganar con vuestro proyecto?
           </Text>
@@ -73,7 +79,7 @@ export default function ModalScreen() {
           </Text>
         </FAQText>
 
-        <FAQText style={{ width: 620 }}>
+        <FAQText style={styles.subtitle}>
           <Text style={styles.subtitle1}>¿Está mi dinero a salvo?</Text>
           <Text style={styles.subtitle2}>
             {"\n"}Sí, el sistema de la blockchain protege tu dinero contra
@@ -81,6 +87,9 @@ export default function ModalScreen() {
             hackear millones de ordenadores a la vez.
           </Text>
         </FAQText>
+
+		</ScrollView>
+    </SafeAreaView>
 
         <BottomTab.Screen
           name="TabOne"
@@ -105,8 +114,6 @@ export default function ModalScreen() {
         />
       </View>
 
-      <MonoText>Probando estilo MonoText</MonoText>
-
       <View
         style={styles.separator}
         lightColor="#eee"
@@ -125,9 +132,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  scrollView: {
+    marginHorizontal: 20,
+  },
   title: {
-    fontSize: 20,
+    fontSize: 40,
     fontWeight: "bold",
+    marginBottom: 20,
   },
   separator: {
     marginVertical: 30,
@@ -135,30 +146,33 @@ const styles = StyleSheet.create({
     width: "80%",
   },
   subtitle: {
-    flex: 1,
-    fontWeight: "bold",
+    paddingRight: 10,
+    paddingLeft: 10,
+    marginBottom: 20,
   },
   subtitle1: {
     textAlign: "justify",
     fontSize: 15,
     fontWeight: "bold",
     justifyContent: "center",
-    marginRight: "10%",
-    marginLeft: "10%",
-    marginTop: "5px",
+    marginRight: 10,
+    marginLeft: 10,
+    marginTop: 5,
     padding: "1%",
+    // fontFamily: 'space-mono',
   },
   subtitle2: {
     textAlign: "justify",
     fontSize: 15,
     fontWeight: "normal",
-    flex: 1,
+    // flex: 1,
     backgroundColor: "#eee",
-    alignItems: "center",
+    // alignItems: "center",
     justifyContent: "center",
-    marginRight: "10%",
-    marginLeft: "10%",
-    marginTop: "5px",
+    marginRight: 10,
+    marginLeft: 10,
+    marginTop: 5,
+    // fontFamily: 'space-mono',
   },
   bloque: {
     flex: 1,
