@@ -14,16 +14,18 @@ export default function TabTwoScreen({
         resizeMode="stretch"
         source={require("../assets/images/cardanocoin.png")}
       />
-      <Text style={styles.title}>Login de usuario</Text>
+      <Text style={styles.title}>Registrar Wallet</Text>
 
-      <Text style={styles.subtitle1}>Usuario:</Text>
+      <Text style={styles.subtitle1}>Nombre de la billetera:</Text>
       <TextInput style={styles.loginbox} placeholder="SilentBob" />
-      <Text style={styles.subtitle2}>Contraseña:</Text>
+      <Text style={styles.subtitle2}>Contraseña de gastos:</Text>
+      <TextInput style={styles.loginbox} secureTextEntry={true} />
+	  <Text style={styles.subtitle2}>Repetir contraseña de gastos:</Text>
       <TextInput style={styles.loginbox} secureTextEntry={true} />
       <Button
         onPress={() => confirm("Esto es un WIP, por favor se paciente")}
-        title="Log in"
-        color="#841584"
+        title="Registrar"
+        color="#4c55ad"
         accessibilityLabel="Learn more about this purple button"
       />
     </View>
