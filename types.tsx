@@ -28,6 +28,11 @@ export type RootTabParamList = {
   Home: undefined;
   TabTwo: undefined;
   TabOne: undefined;
+  TabThree: undefined;
+  Modal: undefined;
+  Manifiesto: undefined;
+  Wallet: undefined;
+  NotFound: undefined;
 };
 
 

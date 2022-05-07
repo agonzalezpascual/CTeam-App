@@ -1,6 +1,7 @@
 import { Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 import { Text, View } from '../components/Themed';
+import { Copyrights } from "../components/Copyrights";
 import { RootStackScreenProps } from '../types';
 
 export default function NotFoundScreen({ navigation }: RootStackScreenProps<'NotFound'>) {
@@ -11,7 +12,7 @@ export default function NotFoundScreen({ navigation }: RootStackScreenProps<'Not
           style={{width: 450, height:180}}
           source={require("../assets/images/404.jpg")}
         />
-      <Text style={styles.title}>This Are Not the Url You Are Looking For.</Text>
+      <Text style={styles.title}>This Is Not the Url You Are Looking For.</Text>
       <TouchableOpacity onPress={() => navigation.replace('Root')} style={styles.link}>
         <Text style={styles.linkText}>Go to home screen!</Text>
       </TouchableOpacity>
@@ -27,8 +28,10 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 30,
+    fontWeight: "bold",
+    marginBottom: 10,
+	textAlign: 'center',
   },
   link: {
     marginTop: 15,

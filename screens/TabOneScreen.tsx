@@ -1,7 +1,16 @@
 import EditScreenInfo from "../components/EditScreenInfo";
 import { StatusBar } from "expo-status-bar";
-import { Text, View } from "../components/Themed";
-import { Image, StyleSheet, Platform } from "react-native";
+import { View } from "../components/Themed";
+import { Copyrights } from "../components/Copyrights";
+import {
+  Image,
+  StyleSheet,
+  Platform,
+  Linking,
+  Text,
+  SafeAreaView,
+  ScrollView,
+} from "react-native";
 import { RootTabScreenProps } from "../types";
 import React from "react";
 
@@ -15,22 +24,46 @@ export default function TabOneScreen({
         resizeMode="stretch"
         source={require("../assets/images/cardanocoin.png")}
       />
-      <Text style={styles.title}>
-        Bienvenido a la aplicación de la Stake Pool ORION
-      </Text>
-
-      <Text style={styles.subtitle}>
-        El proyecto ORION es una novesosa forma de operar con criptodivisas.
-        {"\n"}
-        {"\n"}
-        Nuestra principal preocupación es acercar al usuario al mundo de las
-        criptomonedas de la manera más fácil y sencilla posible... ¡¡Y también
-        de la más rentable!!
-        {"\n"}
-        {"\n"}
-        Empieza ahora mismo creándote una cuenta, o mira nuestro F.A.Q. si
-        quieres más información sobre el proyecto.
-      </Text>
+      <Text style={styles.title}>Staking-Pool ORION</Text>
+      <SafeAreaView style={styles.container}>
+        <ScrollView style={styles.scrollView}>
+          <Text style={styles.subtitle}>
+            El proyecto ORION es una novesosa forma de operar con criptodivisas.
+            Somos activistas a favor de una Internet descentralizada, neutral y
+            resistente a la censura.
+            {"\n"}
+            {"\n"}
+            Nuestro objetivo principal es acercar el mundo de las criptomonedas
+            al usuario pero de una manera fácil y sencilla.
+            {"\n"}
+            {"\n"}
+            Comience creando una Wallet (billetera) si no dispone aún de una. O
+            consulte la información sobre nuestra Pool.
+            {"\n"}
+            {"\n"}{" "}
+            <Text
+              style={styles.subtitle_link}
+              onPress={() => {
+                Linking.openURL("https://wallet.gamechanger.finance/welcome");
+              }}
+            >
+              Crear o importar una Wallet
+            </Text>
+            {"\n"}
+            {"\n"}{" "}
+            <Text
+              style={styles.subtitle_link}
+              onPress={() => {
+                Linking.openURL("http://localhost:19006/wallet");
+              }}
+            >
+              Orion Staking-Pool
+            </Text>
+            {"\n"}
+          </Text>
+        </ScrollView>
+      </SafeAreaView>
+	  <Copyrights></Copyrights>
       <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
       <StatusBar style={Platform.OS === "android" ? "light" : "auto"} />
       <StatusBar style={Platform.OS === "windows" ? "light" : "auto"} />
@@ -44,25 +77,32 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  scrollView: {
+    marginHorizontal: 20,
+  },
   title: {
-    fontSize: 20,
-    paddingTop: 10,
-    paddingRight: 10,
-    paddingLeft: 10,
+    fontSize: 30,
     fontWeight: "bold",
-    textAlign: "center",
-    justifyContent: "center",
+    marginBottom: 10,
+	textAlign: 'center',
   },
   subtitle: {
     fontSize: 15,
     fontWeight: "normal",
-    flex: 1,
     backgroundColor: "#eee",
     alignItems: "center",
     justifyContent: "center",
-    marginRight: "10%",
-    marginLeft: "10%",
+    marginRight: "1%",
+    marginLeft: "1%",
     marginTop: 10,
+    //flex: 1,
+  },
+  subtitle_link: {
+    fontSize: 18,
+    fontWeight: "normal",
+    color: "blue",
+    alignItems: "center",
+    justifyContent: "center",
   },
   separator: {
     marginVertical: 30,
