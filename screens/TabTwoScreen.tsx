@@ -17,7 +17,7 @@ export default function TabTwoScreen({
   navigation,
 }: RootTabScreenProps<"Manifiesto">) {
   return (
-    <View style={styles.container} lightColor="#eee">
+    <View style={styles.container} lightColor="#eee" darkColor="#000">
       <Image
         style={{ width: 100, height: 100 }}
         resizeMode="stretch"
@@ -33,38 +33,33 @@ export default function TabTwoScreen({
             los nuestros:
             {"\n"}
             {"\n"}
+            • Proporcionar transparencia sobre cómo ejecutamos y
+            desarrollamos nuestro ecosistema particular para que los delegadores
+            puedan tomar las mejores decisiones.
             {"\n"}
-            Proporcionar transparencia sobre cómo ejecutamos y desarrollamos
-            nuestro ecosistema particular para que los delegadores puedan tomar
-            las mejores decisiones.
-            {"\n"}
-            {"\n"}
-            Tiene a su disposición nuestra stake-pool con un servicio
+            {"\n"}• Tiene a su disposición nuestra stake-pool con un servicio
             ininterrumpido mientras Cardano esté vivo. No nos preocupan los
             costos operativos a corto plazo, por lo que no dejaremos de operar
             debido a ellos.
             {"\n"}
+            {"\n"}• Cumplir un SLA (Service Level Agreement) del 99,9% de
+            disponibilidad. Ejecutamos cardano-node en nuestros propios
+            servidores y hacemos todo lo posible para automatizar todo para que
+            la stake-pool sea resistente, altamente disponible y lista para
+            escalar en cuestión de segundos.
             {"\n"}
-            Cumplir un SLA (Service Level Agreement) del 99,9% de
-            disponibilidad. Ejecutamos cardano-node en Kubernetes y hacemos todo
-            lo posible para automatizar todo para que la stake-pool sea
-            resistente, altamente disponible y listas para escalar en cuestión
-            de segundos.
+            {"\n"}• Hacer lo que esté en nuestras manos para mantener vivo y
+            saludable el ecosistema de Cardano. Esto incluye informar/corregir
+            errores, ejecutar testnets para explorar, crear herramientas y
+            colaborar con la comunidad. Y por último, pero no menos importante,
+            intentaremos mantener nuestros costos operativos y tarifas lo más
+            bajo posible, comenzando con estos números:
             {"\n"}
+            {"\n"}• Tarifa fija: 340 ADA por epoch (1 epoch equivale a 5 días en
+            la mainnet).
             {"\n"}
-            Hacer lo que esté en nuestras manos para mantener vivo y saludable
-            el ecosistema de Cardano. Esto incluye informar/corregir errores,
-            ejecutar testnets para explorar, crear herramientas y colaborar con
-            la comunidad. Y por último, pero no menos importante, intentaremos
-            mantener nuestros costos operativos y tarifas lo más bajos posible,
-            comenzando con estos números:
-            {"\n"}
-            {"\n"}
-            Tarifa fija: 340 ADA por epoch (1 epoch equivale a 5 días en la
-            mainnet).
-            {"\n"}
-            Tarifa variable: se establecerá en el promedio del ecosistema,
-            actualmente, 2.4%.
+            {"\n"}• Tarifa variable: se establecerá en el promedio del
+            ecosistema, actualmente, 2.4%.
             {"\n"}
             {"\n"}
           </Text>
@@ -83,6 +78,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+	paddingTop: "1%",
   },
   scrollView: {
     marginHorizontal: 20,

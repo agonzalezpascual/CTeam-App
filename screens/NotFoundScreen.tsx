@@ -6,7 +6,7 @@ import { RootStackScreenProps } from '../types';
 
 export default function NotFoundScreen({ navigation }: RootStackScreenProps<'NotFound'>) {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} lightColor="#eee" darkColor="#eee">
 		<Text style={styles.title}>ERROR 404!!</Text>
 		<Image
           style={{width: 450, height:180}}

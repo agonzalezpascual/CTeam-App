@@ -18,7 +18,7 @@ export default function TabOneScreen({
   navigation,
 }: RootTabScreenProps<"Home">) {
   return (
-    <View style={styles.container} lightColor="#eee">
+    <View style={styles.container} lightColor="#eee" darkColor="#eee">
       <Image
         style={{ width: 100, height: 100 }}
         resizeMode="stretch"
@@ -28,7 +28,7 @@ export default function TabOneScreen({
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView}>
           <Text style={styles.subtitle}>
-            El proyecto ORION es una novesosa forma de operar con criptodivisas.
+            El proyecto ORION es una novedosa forma de operar con criptodivisas.
             Somos activistas a favor de una Internet descentralizada, neutral y
             resistente a la censura.
             {"\n"}
@@ -54,7 +54,7 @@ export default function TabOneScreen({
             <Text
               style={styles.subtitle_link}
               onPress={() => {
-                Linking.openURL("http://localhost:19006/wallet");
+                Linking.openURL("http://localhost:19006/orionpool");
               }}
             >
               Orion Staking-Pool
@@ -63,7 +63,7 @@ export default function TabOneScreen({
           </Text>
         </ScrollView>
       </SafeAreaView>
-	  <Copyrights></Copyrights>
+      <Copyrights></Copyrights>
       <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
       <StatusBar style={Platform.OS === "android" ? "light" : "auto"} />
       <StatusBar style={Platform.OS === "windows" ? "light" : "auto"} />
@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    paddingTop: "1%",
   },
   scrollView: {
     marginHorizontal: 20,
@@ -83,8 +84,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: "bold",
-    marginBottom: 10,
-	textAlign: 'center',
+    marginBottom: "1%",
+    textAlign: "center",
   },
   subtitle: {
     fontSize: 15,
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  separator: {
+  separator: { // TODO: Creo que esto no se usa 🦢
     marginVertical: 30,
     height: 1,
     width: "80%",

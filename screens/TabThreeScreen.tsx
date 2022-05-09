@@ -8,9 +8,9 @@ import React from "react";
 
 export default function TabThreeScreen({
   navigation,
-}: RootTabScreenProps<"Wallet">) {
+}: RootTabScreenProps<"StakePool">) {
   return (
-    <View style={styles.container} lightColor="#eee">
+    <View style={styles.container} lightColor="#eee" darkColor="#eee">
       <Image
         style={{ width: 100, height: 100 }}
         resizeMode="stretch"
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+	paddingTop: "1%",
   },
   scrollView: {
     marginHorizontal: 20,

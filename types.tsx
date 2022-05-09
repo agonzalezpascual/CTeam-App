@@ -31,7 +31,7 @@ export type RootTabParamList = {
   TabThree: undefined;
   Modal: undefined;
   Manifiesto: undefined;
-  Wallet: undefined;
+  StakePool: undefined;
   NotFound: undefined;
 };
 

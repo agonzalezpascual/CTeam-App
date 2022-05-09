@@ -120,7 +120,7 @@ function BottomTabNavigator() {
         name="TabThree"
         component={TabThreeScreen}
         options={{
-          title: "Wallet",
+          title: "Orion-Pool",
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />

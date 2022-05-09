@@ -22,7 +22,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 export default function ModalScreen() {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} lightColor="#eee" darkColor="#eee">
       <Image
         style={{ width: 100, height: 100 }}
         resizeMode="stretch"
@@ -37,7 +37,7 @@ export default function ModalScreen() {
                 ¿Quién conforma el proyecto ORION?
               </Text>
               <Text style={styles.subtitle2}>
-                {"\n"}Somos 5 premio estudiantes de DAM del centro N.S. de los
+                {"\n"}Somos 5 estudiantes de DAM del centro N.S. de los
                 Reyes - Sagrada Familia, Sevilla.
               </Text>
             </FAQText>
@@ -83,7 +83,7 @@ export default function ModalScreen() {
               <Text style={styles.subtitle2}>
                 {"\n"}Entre un 4% y un 6% anual, dependiendo de la facturación
                 que tengamos. Aparte de esto hay que sumarle el crecimiento de
-                la propia criptomoneda ¡¡Todo son beneficios!!
+                la propia criptomoneda. ¡¡Todo son beneficios!!
               </Text>
             </FAQText>
 
@@ -139,6 +139,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+	paddingTop: "1%",
   },
   scrollView: {
     marginHorizontal: 20,
