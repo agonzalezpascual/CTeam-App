@@ -40,27 +40,26 @@ export default function TabOneScreen({
             Comience creando una Wallet (billetera) si no dispone aún de una. O
             consulte la información sobre nuestra Pool.
             {"\n"}
-            {"\n"}{" "}
-            <Text
-              style={styles.subtitle_link}
-              onPress={() => {
-                Linking.openURL("https://wallet.gamechanger.finance/welcome");
-              }}
-            >
-              Crear o importar una Wallet
-            </Text>
-            {"\n"}
-            {"\n"}{" "}
-            <Text
-              style={styles.subtitle_link}
-              onPress={() => {
-                Linking.openURL("http://localhost:19006/orionpool");
-              }}
-            >
-              Orion Staking-Pool
-            </Text>
             {"\n"}
           </Text>
+          <Text
+            style={styles.subtitle_link}
+            onPress={() => {
+              Linking.openURL("https://wallet.gamechanger.finance/welcome");
+            }}
+          >
+            Crear o importar una Wallet{"\n"}{"\n"}
+          </Text>
+
+          <Text
+            style={styles.subtitle_link}
+            onPress={() => {
+              Linking.openURL("http://localhost:19006/orionpool");
+            }}
+          >
+            Orion Staking-Pool{"\n"}
+          </Text>
+          
         </ScrollView>
       </SafeAreaView>
       <Copyrights></Copyrights>
@@ -104,8 +103,11 @@ const styles = StyleSheet.create({
     color: "blue",
     alignItems: "center",
     justifyContent: "center",
+	marginRight: "1%",
+    marginLeft: "1%",
   },
-  separator: { // TODO: Creo que esto no se usa 🦢
+  separator: {
+    // TODO: Creo que esto no se usa 🦢 cuack // peace 🤘🏿
     marginVertical: 30,
     height: 1,
     width: "80%",

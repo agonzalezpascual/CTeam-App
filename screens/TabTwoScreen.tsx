@@ -17,7 +17,7 @@ export default function TabTwoScreen({
   navigation,
 }: RootTabScreenProps<"Manifiesto">) {
   return (
-    <View style={styles.container} lightColor="#eee" darkColor="#000">
+    <View style={styles.container} lightColor="#eee" darkColor="#eee">
       <Image
         style={{ width: 100, height: 100 }}
         resizeMode="stretch"
@@ -33,32 +33,32 @@ export default function TabTwoScreen({
             los nuestros:
             {"\n"}
             {"\n"}
-            • Proporcionar transparencia sobre cómo ejecutamos y
+            * Proporcionar transparencia sobre cómo ejecutamos y
             desarrollamos nuestro ecosistema particular para que los delegadores
             puedan tomar las mejores decisiones.
             {"\n"}
-            {"\n"}• Tiene a su disposición nuestra stake-pool con un servicio
+            {"\n"}* Tiene a su disposición nuestra stake-pool con un servicio
             ininterrumpido mientras Cardano esté vivo. No nos preocupan los
             costos operativos a corto plazo, por lo que no dejaremos de operar
             debido a ellos.
             {"\n"}
-            {"\n"}• Cumplir un SLA (Service Level Agreement) del 99,9% de
+            {"\n"}* Cumplir un SLA (Service Level Agreement) del 99,9% de
             disponibilidad. Ejecutamos cardano-node en nuestros propios
             servidores y hacemos todo lo posible para automatizar todo para que
             la stake-pool sea resistente, altamente disponible y lista para
             escalar en cuestión de segundos.
             {"\n"}
-            {"\n"}• Hacer lo que esté en nuestras manos para mantener vivo y
+            {"\n"}* Hacer lo que esté en nuestras manos para mantener vivo y
             saludable el ecosistema de Cardano. Esto incluye informar/corregir
             errores, ejecutar testnets para explorar, crear herramientas y
             colaborar con la comunidad. Y por último, pero no menos importante,
             intentaremos mantener nuestros costos operativos y tarifas lo más
             bajo posible, comenzando con estos números:
             {"\n"}
-            {"\n"}• Tarifa fija: 340 ADA por epoch (1 epoch equivale a 5 días en
+            {"\n"}* Tarifa fija: 340 ADA por epoch (1 epoch equivale a 5 días en
             la mainnet).
             {"\n"}
-            {"\n"}• Tarifa variable: se establecerá en el promedio del
+            {"\n"}* Tarifa variable: se establecerá en el promedio del
             ecosistema, actualmente, 2.4%.
             {"\n"}
             {"\n"}

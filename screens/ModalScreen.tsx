@@ -37,8 +37,8 @@ export default function ModalScreen() {
                 ¿Quién conforma el proyecto ORION?
               </Text>
               <Text style={styles.subtitle2}>
-                {"\n"}Somos 5 estudiantes de DAM del centro N.S. de los
-                Reyes - Sagrada Familia, Sevilla.
+                {"\n"}Somos 5 estudiantes de DAM del centro N.S. de los Reyes -
+                Sagrada Familia, Sevilla.
               </Text>
             </FAQText>
 
@@ -127,9 +127,10 @@ export default function ModalScreen() {
         darkColor="rgba(255,255,255,0.1)"
       />
 
-<Copyrights></Copyrights>
-      {/* Use a light status bar on iOS to account for the black space above the modal */}
+      <Copyrights></Copyrights>
       <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
+      <StatusBar style={Platform.OS === "android" ? "light" : "auto"} />
+      <StatusBar style={Platform.OS === "windows" ? "light" : "auto"} />
     </View>
   );
 }
@@ -139,7 +140,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-	paddingTop: "1%",
+    paddingTop: "1%",
   },
   scrollView: {
     marginHorizontal: 20,
@@ -148,7 +149,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "bold",
     marginBottom: 10,
-	textAlign: 'center',
+    textAlign: "center",
   },
   separator: {
     marginVertical: 30,

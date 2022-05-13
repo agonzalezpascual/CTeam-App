@@ -35,32 +35,29 @@ export function Copyrights(props: TextProps) {
               resizeMode="stretch"
               source={require("../assets/images/twitter.png")}
             />
-          </TouchableOpacity>
-		  {" "}
+          </TouchableOpacity>{" "}
           <TouchableOpacity
             onPress={() => {
               Linking.openURL("https://discord.gg/fqK83fC/");
             }}
           >
-             <Image
+            <Image
               style={{ width: 40, height: 40 }}
               resizeMode="stretch"
               source={require("../assets/images/discord.png")}
             />
-          </TouchableOpacity>
-		  {" "}
+          </TouchableOpacity>{" "}
           <TouchableOpacity
             onPress={() => {
               Linking.openURL("https://github.com/agonzalezpascual/CTeam-App/");
             }}
           >
-             <Image
+            <Image
               style={{ width: 40, height: 40 }}
               resizeMode="stretch"
               source={require("../assets/images/github.png")}
             />
-          </TouchableOpacity>
-		  {" "}
+          </TouchableOpacity>{" "}
           <TouchableOpacity
             onPress={() => {
               Linking.openURL(
@@ -107,5 +104,3 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
 });
-
-// pito pito pita pite ^v^
