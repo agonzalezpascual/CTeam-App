@@ -106,14 +106,14 @@ export default function TabThreeScreen({
 
           <Text style={styles.subtitle}>
             RECUERDE comprobar que delega a la Pool correcta: {"\n"}
-            POOL_ID=bd24b3372791f401cc029455c44ea77f3c8750ce3b804a354af0ff16
+            POOL_ID=stake_test1ur37k5awfzjt6q6w5f2w9vsqfhl52zqrhss8uev7z2zf6sqwdrun0
           </Text>
         </ScrollView>
       </SafeAreaView>
 
       <Copyrights></Copyrights>
-      <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
-      <StatusBar style={Platform.OS === "android" ? "light" : "auto"} />
+      <StatusBar style={Platform.OS === "ios" ? "dark" : "auto"} />
+      <StatusBar style={Platform.OS === "android" ? "dark" : "auto"} />
       <StatusBar style={Platform.OS === "windows" ? "light" : "auto"} />
     </View>
   );
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     marginRight: "1%",
     marginLeft: "1%",
     marginTop: 10,
-    //flex: 1,
+    flex: 1,
   },
   subtitle_link: {
     fontSize: 18,

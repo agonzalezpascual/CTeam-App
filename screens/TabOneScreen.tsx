@@ -48,7 +48,8 @@ export default function TabOneScreen({
               Linking.openURL("https://wallet.gamechanger.finance/welcome");
             }}
           >
-            Crear o importar una Wallet{"\n"}{"\n"}
+            Crear o importar una Wallet{"\n"}
+            {"\n"}
           </Text>
 
           <Text
@@ -59,12 +60,11 @@ export default function TabOneScreen({
           >
             Orion Staking-Pool{"\n"}
           </Text>
-          
         </ScrollView>
       </SafeAreaView>
       <Copyrights></Copyrights>
-      <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
-      <StatusBar style={Platform.OS === "android" ? "light" : "auto"} />
+      <StatusBar style={Platform.OS === "ios" ? "dark" : "auto"} />
+      <StatusBar style={Platform.OS === "android" ? "dark" : "auto"} />
       <StatusBar style={Platform.OS === "windows" ? "light" : "auto"} />
     </View>
   );
@@ -95,7 +95,6 @@ const styles = StyleSheet.create({
     marginRight: "1%",
     marginLeft: "1%",
     marginTop: 10,
-    //flex: 1,
   },
   subtitle_link: {
     fontSize: 18,
@@ -103,11 +102,10 @@ const styles = StyleSheet.create({
     color: "blue",
     alignItems: "center",
     justifyContent: "center",
-	marginRight: "1%",
+    marginRight: "1%",
     marginLeft: "1%",
   },
   separator: {
-    // TODO: Creo que esto no se usa 🦢 cuack // peace 🤘🏿
     marginVertical: 30,
     height: 1,
     width: "80%",

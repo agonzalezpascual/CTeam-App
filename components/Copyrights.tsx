@@ -2,19 +2,15 @@ import { Text, TextProps } from "./Themed";
 import * as React from "react";
 import {
   View,
-  ScrollView,
   Linking,
   Image,
-  TouchableHighlight,
   TouchableOpacity,
 } from "react-native";
-import Constants from "expo-constants";
 import { StyleSheet } from "react-native";
 import { Platform } from "react-native";
 
 export function Copyrights(props: TextProps) {
   return (
-    // <View style={{ flex: 0 }}>
     <View
       style={
         Platform.OS === "ios" || Platform.OS === "android"
@@ -78,7 +74,6 @@ export function Copyrights(props: TextProps) {
   );
 }
 
-// TODO: Si todo va guay, los dos son el mismo estilo ^.^
 const styles = StyleSheet.create({
   movil: {
     flex: 0.2,
@@ -87,13 +82,6 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    // position: "absolute",
-    // marginTop: 200,
-    // marginBottom: 200,
-    // width: 100%,
-    // width: 150,
-    // borderColor: "red",
-    // borderWidth: 1,
   },
   web: {
     flex: 0.2,

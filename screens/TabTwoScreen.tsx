@@ -5,7 +5,6 @@ import {
   Image,
   StyleSheet,
   Platform,
-  Linking,
   Text,
   SafeAreaView,
   ScrollView,
@@ -66,8 +65,8 @@ export default function TabTwoScreen({
         </ScrollView>
       </SafeAreaView>
       <Copyrights></Copyrights>
-      <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
-      <StatusBar style={Platform.OS === "android" ? "light" : "auto"} />
+      <StatusBar style={Platform.OS === "ios" ? "dark" : "auto"} />
+      <StatusBar style={Platform.OS === "android" ? "dark" : "auto"} />
       <StatusBar style={Platform.OS === "windows" ? "light" : "auto"} />
     </View>
   );

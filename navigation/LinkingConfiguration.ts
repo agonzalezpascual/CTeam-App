@@ -30,6 +30,11 @@ const linking: LinkingOptions<RootStackParamList> = {
               TabThreeScreen: "orionpool",
             },
           },
+		  TabFour: {
+            screens: {
+              TabFourScreen: "wallet",
+            },
+          },
           Modal: "modal",
           NotFound: "*",
         },
