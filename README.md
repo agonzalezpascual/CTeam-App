@@ -63,8 +63,6 @@ expo start # si queremos usar directamente el comando de expo
   </p>
 </div>
 
-
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -90,7 +88,6 @@ expo start # si queremos usar directamente el comando de expo
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
-
 
 ## About The Project
 The ORION project seeks to create a service as accessible as possible, with its own wallet, easy to use and intuitive.

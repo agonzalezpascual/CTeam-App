@@ -10,11 +10,34 @@ import {
   SafeAreaView,
 } from "react-native";
 import { RootTabScreenProps } from "../types";
-import React from "react";
+import React, { useState } from "react";
 
 export default function TabFourScreen({
   navigation,
 }: RootTabScreenProps<"Wallet">) {
+  const [text, setText] = useState("Initial text");
+
+  const onPressHandler = async (event) => {
+    try {
+      const response = await fetch(
+        'http://127.0.0.1:5000/stake', {mode: 'no-cors'}
+      );
+      const json = await response.json();
+      console.log(json)
+      return json.lovelace;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+
+
+
+
+
+
+  
   return (
     <View style={styles.container} lightColor="#eee" darkColor="#eee">
       <Image
@@ -30,12 +53,9 @@ export default function TabFourScreen({
         <TextInput style={styles.loginbox} secureTextEntry={true} />
         <Text style={styles.subtitle2}>Repetir contraseña de gastos:</Text>
         <TextInput style={styles.loginbox} secureTextEntry={true} />
-        <Button
-          onPress={() => confirm("Esto es un WIP, por favor se paciente")}
-          title="Registrar"
-          color="#4c55ad"
-          accessibilityLabel="Learn more about this purple button"
-        />
+
+        <Text>{text}</Text>
+        <Button title="Change Text" onPress={onPressHandler} />
       </SafeAreaView>
       <Copyrights></Copyrights>
       <StatusBar style={Platform.OS === "ios" ? "dark" : "auto"} />
@@ -73,12 +93,12 @@ const styles = StyleSheet.create({
     marginRight: "1%",
     marginLeft: "1%",
     marginTop: 10,
-	marginBottom: 5,
+    marginBottom: 5,
   },
   subtitle2: {
     fontSize: 15,
     fontWeight: "normal",
-	marginTop: 10,
+    marginTop: 10,
     marginBottom: 5,
   },
   separator: {
