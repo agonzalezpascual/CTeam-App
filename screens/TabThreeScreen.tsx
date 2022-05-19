@@ -154,9 +154,10 @@ const styles = StyleSheet.create({
     color: "blue",
     alignItems: "center",
     justifyContent: "center",
+	marginRight: "1%",
+    marginLeft: "2%",
   },
   separator: {
-    // TODO: Creo que esto no se usa 🦢
     marginVertical: 30,
     height: 1,
     width: "80%",
