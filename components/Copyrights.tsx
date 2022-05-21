@@ -1,11 +1,6 @@
 import { Text, TextProps } from "./Themed";
 import * as React from "react";
-import {
-  View,
-  Linking,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { View, Linking, Image, TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
 import { Platform } from "react-native";
 
@@ -70,21 +65,25 @@ export function Copyrights(props: TextProps) {
         </Text>
       </View>
       <Text {...props} style={[props.style, { fontFamily: "space-mono" }]} />
+	  <Text style={{ textAlign: "center"}}>
+          www.provatropa.es
+        </Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   movil: {
-    flex: 0.2,
+    flex: 0.155,
     justifyContent: "center",
     textAlign: "center",
+	top: 5,
     left: 0,
     right: 0,
     bottom: 0,
   },
   web: {
-    flex: 0.2,
+    flex: 0.20,
     justifyContent: "center",
     textAlign: "center",
     left: 0,

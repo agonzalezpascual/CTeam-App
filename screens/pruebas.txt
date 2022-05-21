@@ -1,0 +1,270 @@
+import { StatusBar } from "expo-status-bar";
+import { Text, View } from "../components/Themed";
+import { Copyrights } from "../components/Copyrights";
+import {
+  Image,
+  StyleSheet,
+  TextInput,
+  Button,
+  Platform,
+  SafeAreaView,
+  Alert,
+  TouchableOpacity
+} from "react-native";
+import { RootTabScreenProps } from "../types";
+import axios from "axios";
+import { useState } from "react";
+import { useEffect } from "react";
+import { ActivityIndicator, FlatList } from "react-native";
+
+export default function TabFourScreen({
+  navigation,
+}: RootTabScreenProps<"Wallet">) {
+  const [text, setText] = useState("Initial text");
+
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+  const Separator = () => <View style={styles.separator} />;
+
+  const onPressHandler = async (/* event */) => {
+    try {
+      const response = await fetch("https://reactnative.dev/movies.json", {
+        mode: "no-cors",
+      });
+      const json = await response.json();
+      console.log(response);
+      setData(json.movies);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getMovies = async () => {
+    try {
+      const response = await fetch("https://reactnative.dev/movies.json");
+      console.log(response);
+      const json = await response.json();
+
+      setData(json.movies);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getMovies();
+  }, []);
+
+  const App = () => {
+    const getDataUsingSimpleGetCall = () => {
+      axios
+        .get("https://jsonplaceholder.typicode.com/posts/1")
+        .then(function (response) {
+          // handle success
+          alert(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+          // handle error
+          alert(error.message);
+        })
+        .finally(function () {
+          // always executed
+          alert("Finally called");
+        });
+    };
+
+    const getDataUsingAsyncAwaitGetCall = async () => {
+      try {
+        const response = await axios.get(
+          "https://jsonplaceholder.typicode.com/posts/1"
+        );
+        alert(JSON.stringify(response.data));
+      } catch (error) {
+        // handle error
+        alert(error.message);
+      }
+    };
+
+    const postDataUsingSimplePostCall = () => {
+      axios
+        .post("https://jsonplaceholder.typicode.com/posts", {
+          title: "foo",
+          body: "bar",
+          userId: 1,
+        })
+        .then(function (response) {
+          // handle success
+          alert(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+          // handle error
+          alert(error.message);
+        });
+    };
+
+    const multipleRequestsInSingleCall = () => {
+      axios
+        .all([
+          axios
+            .get("https://jsonplaceholder.typicode.com/posts/1")
+            .then(function (response) {
+              // handle success
+              alert("Post 1 : " + JSON.stringify(response.data));
+            }),
+          axios
+            .get("https://jsonplaceholder.typicode.com/posts/2")
+            .then(function (response) {
+              // handle success
+              alert("Post 2 : " + JSON.stringify(response.data));
+            }),
+        ])
+        .then(
+          axios.spread(function (acct, perms) {
+            // Both requests are now complete
+            alert("Both requests are now complete");
+          })
+        );
+    };
+
+
+
+
+
+
+
+
+  return (
+    <View style={styles.container} lightColor="#eee" darkColor="#eee">
+      <Image
+        style={{ width: 100, height: 100 }}
+        resizeMode="stretch"
+        source={require("../assets/images/cardanocoin.png")}
+      />
+      <Text style={styles.title}>Registrar Wallet</Text>
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.subtitle}>Nombre de la billetera:</Text>
+        <TextInput style={styles.loginbox} placeholder="SilentBob" />
+        <Text style={styles.subtitle}>Contraseña de gastos:</Text>
+        <TextInput style={styles.loginbox} secureTextEntry={true} />
+        <Text style={styles.subtitle2}>Repetir contraseña de gastos:</Text>
+        <TextInput style={styles.loginbox} secureTextEntry={true} />
+
+        <Text>{text}</Text>
+        <Button title="Change Text" onPress={onPressHandler} />
+
+        <View style={{ flex: 1, padding: 24 }}>
+          {isLoading ? (
+            <ActivityIndicator />
+          ) : (
+            <FlatList
+              data={data}
+              keyExtractor={({ id }, index) => id}
+              renderItem={({ item }) => <Text>{item}</Text>}
+            />
+          )}
+        </View>
+      </SafeAreaView>
+
+
+	  <View style={styles.container}>
+      <Text style={{fontSize: 30, textAlign: 'center'}}>
+        Example of Axios Networking in React Native
+      </Text>
+      {/*Running GET Request*/}
+      <TouchableOpacity
+        style={styles.buttonStyle}
+        onPress={getDataUsingSimpleGetCall}>
+        <Text>Simple Get Call</Text>
+      </TouchableOpacity>
+ 
+      <TouchableOpacity
+        style={styles.buttonStyle}
+        onPress={getDataUsingAsyncAwaitGetCall}>
+        <Text>Get Data Using Async Await GET</Text>
+      </TouchableOpacity>
+ 
+      <TouchableOpacity
+        style={styles.buttonStyle}
+        onPress={postDataUsingSimplePostCall}>
+        <Text>Post Data Using POST</Text>
+      </TouchableOpacity>
+ 
+      <TouchableOpacity
+        style={styles.buttonStyle}
+        onPress={multipleRequestsInSingleCall}>
+        <Text>Multiple Concurrent Requests In Single Call</Text>
+      </TouchableOpacity>
+ 
+      <Text style={{textAlign: 'center', marginTop: 18}}>
+        www.aboutreact.com
+      </Text>
+    </View>
+      <Copyrights></Copyrights>
+      <StatusBar style={Platform.OS === "ios" ? "dark" : "auto"} />
+      <StatusBar style={Platform.OS === "android" ? "dark" : "auto"} />
+      <StatusBar style={Platform.OS === "windows" ? "light" : "auto"} />
+    </View>
+  );
+};
+}
+
+const styles = StyleSheet.create({
+  loginbox: {
+    height: 25,
+    width: 150,
+    borderColor: "gray",
+    borderWidth: 1,
+    marginBottom: 10,
+  },
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: "1%",
+  },
+  title: {
+    fontSize: 30,
+    color: "black",
+    fontWeight: "bold",
+    marginBottom: "1%",
+    textAlign: "center",
+  },
+  subtitle: {
+    fontSize: 15,
+    color: "black",
+    fontWeight: "normal",
+    backgroundColor: "#eee",
+    alignItems: "center",
+    marginRight: "1%",
+    marginLeft: "1%",
+    marginTop: 10,
+    marginBottom: 5,
+  },
+  subtitle2: {
+    fontSize: 15,
+    color: "black",
+    fontWeight: "normal",
+    marginTop: 10,
+    marginBottom: 5,
+  },
+  fixToText: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  separator: {
+    marginVertical: 30,
+    height: 1,
+    width: "80%",
+  },
+  buttonStyle: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10,
+    width: '100%',
+    marginTop: 16,
+  },
+});

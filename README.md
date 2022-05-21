@@ -89,10 +89,6 @@ expo start # si queremos usar directamente el comando de expo
   </ol>
 </details>
 
-eas build --platform android
-eas build --platform ios
-eas build --platform all
-
 ## About The Project
 The ORION project seeks to create a service as accessible as possible, with its own wallet, easy to use and intuitive.
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -108,7 +104,6 @@ The ORION project seeks to create a service as accessible as possible, with its 
 * [Haskell](https://www.haskell.org/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 # Getting Started
 
