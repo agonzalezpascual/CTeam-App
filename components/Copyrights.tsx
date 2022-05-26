@@ -40,7 +40,7 @@ export function Copyrights(props: TextProps) {
           </TouchableOpacity>{" "}
           <TouchableOpacity
             onPress={() => {
-              Linking.openURL("https://github.com/agonzalezpascual/CTeam-App/");
+              Linking.openURL("https://github.com/cteam-cardano/");
             }}
           >
             <Image
@@ -65,9 +65,6 @@ export function Copyrights(props: TextProps) {
         </Text>
       </View>
       <Text {...props} style={[props.style, { fontFamily: "space-mono" }]} />
-	  <Text style={{ textAlign: "center"}}>
-          www.provatropa.es
-        </Text>
     </View>
   );
 }
@@ -77,7 +74,6 @@ const styles = StyleSheet.create({
     flex: 0.155,
     justifyContent: "center",
     textAlign: "center",
-	top: 5,
     left: 0,
     right: 0,
     bottom: 0,
@@ -88,6 +84,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     left: 0,
     right: 0,
-    bottom: 0,
+    bottom: 2,
   },
 });

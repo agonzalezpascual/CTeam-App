@@ -9,8 +9,10 @@ import {
   TouchableOpacity,
   Platform,
   Alert,
+  Button,
   SafeAreaView,
   ScrollView,
+  TextInput,
 } from "react-native";
 import axios from "axios";
 import { useState } from "react";
@@ -20,106 +22,78 @@ import { ActivityIndicator, FlatList } from "react-native";
 export default function TabFourScreen({
   navigation,
 }: RootTabScreenProps<"Wallet">) {
-  const getDataUsingSimpleGetCall = () => {
-    axios
-      .get(
-        "https://jsonplaceholder.typicode.com/posts/1"
-        //"https://127.0.0.1:5000/stake"
-      )
-      .then(function (response) {
-        // handle success
-        alert(JSON.stringify(response.data));
-      })
-      .catch(function (error) {
-        // handle error
-        alert(error.message);
-      })
-      .finally(function () {
-        // always executed
-        alert("Finally called");
-      });
-  };
-
-  const getDataUsingAsyncAwaitGetCall = async () => {
-    try {
-		let res = await axios({
-			 url: 'https://127.0.0.1:5000/stake',
-			 method: 'get',
-			 timeout: 8000,
-			 headers: {
-				 "Access-Control-Allow-Origin": "https://127.0.0.1:5000",
-				 'Content-Type': 'application/x-www-form-urlencoded'
-			 }
-		 })
-		 if(res.status == 200){
-			 // test for status you want, etc
-			 console.log(res.status)
-		 }    
-		 // Don't forget to return something   
-		 return res.data
-	 }
-	 catch (err) {
-		 console.error(err);
-	 }
-  };
-
-  const postDataUsingSimplePostCall = () => {
-    axios
-      .post("https://jsonplaceholder.typicode.com/posts", {
-        title: "foo",
-        body: "bar",
-        userId: 1,
-      })
-      .then(function (response) {
-        // handle success
-        alert(JSON.stringify(response.data));
-      })
-      .catch(function (error) {
-        // handle error
-        alert(error.message);
-      });
-  };
-
-  const multipleRequestsInSingleCall = () => {
-    axios
-      .all([
-        axios
-          //.get("https://jsonplaceholder.typicode.com/posts/1")
-		  .get("https://127.0.0.1:5000/stake")
-          .then(function (response) {
-            // handle success
-            alert("Post 1 : " + JSON.stringify(response.data));
-          }),
-        axios
-          //.get("https://jsonplaceholder.typicode.com/posts/2")
-		  .get("https://127.0.0.1:5000/stake")
-          .then(function (response) {
-            // handle success
-            alert("Post 2 : " + JSON.stringify(response.data));
-          }),
-      ])
-      .then(
-        axios.spread(function (acct, perms) {
-          // Both requests are now complete
-          alert("Both requests are now complete");
-        })
-      );
-  };
-
-  
   const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
-  const getMovies = async () => {
+
+  const [testADAs, setTestADAs] = useState([]);
+  const [testEpoch, setTestEpoch] = useState([]);
+  const [testBlock, setTestBlock] = useState([]);
+  const [testPool, setTestPool] = useState([]);
+  const [testPoolHistory, setPoolHistory] = useState([]);
+
+  const getADAs = async () => {
     try {
-      const response = await fetch("https://127.0.0.1:5000/stake", {
-        mode: "no-cors",
-      });
-      console.log(response);
+      const response = await fetch("https://127.0.0.1:5000/stake");
       const json = await response.json();
 
-      JSON.stringify(setData(json.lovelace));
-      //setData(json);
+      setTestADAs(json.lovelace);
     } catch (error) {
+      console.log("askiiiiiiiiii");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getEpochs = async () => {
+    try {
+      const response = await fetch("https://127.0.0.1:5000/epoch");
+      const json = await response.json();
+
+      setTestEpoch(json.epoch);
+    } catch (error) {
+      console.log("error epoch");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getBlock = async () => {
+    try {
+      const response = await fetch("https://127.0.0.1:5000/block");
+      const json = await response.json();
+
+      setTestBlock(json.block);
+    } catch (error) {
+      console.log("error block");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getPool = async () => {
+    try {
+      const response = await fetch("https://127.0.0.1:5000/pool");
+      const json = await response.json();
+
+      setTestPool(json.blocks_minted);
+    } catch (error) {
+      console.log("error blocks_minted");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getPoolHistory = async () => {
+    try {
+      const response = await fetch("https://127.0.0.1:5000/poolhistory");
+      const json = await response.json();
+
+      setPoolHistory(json.active_stake);
+    } catch (error) {
+      console.log("error active_stake");
       console.error(error);
     } finally {
       setLoading(false);
@@ -127,7 +101,11 @@ export default function TabFourScreen({
   };
 
   useEffect(() => {
-    getMovies();
+    getADAs();
+	getEpochs();
+	getBlock();
+	getPool();
+	getPoolHistory();
   }, []);
 
   return (
@@ -140,49 +118,22 @@ export default function TabFourScreen({
       <Text style={styles.title}>Staking-Pool ORION</Text>
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView}>
-          <Text style={{ fontSize: 30, textAlign: "center" }}>
-            {"\n"}Example of Axios Networking in React Native
+          <Text style={styles.subtitle}>
+            TestADAs actualmente en nuestra pool: {testADAs}
           </Text>
-          {/*Running GET Request*/}
-          <TouchableOpacity
-            style={styles.buttonStyle}
-            onPress={getDataUsingSimpleGetCall}
-          >
-            <Text>Simple Get Call</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.buttonStyle}
-            onPress={getDataUsingAsyncAwaitGetCall}
-          >
-            <Text>Get Data Using Async Await GET</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.buttonStyle}
-            onPress={postDataUsingSimplePostCall}
-          >
-            <Text>Post Data Using POST</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.buttonStyle}
-            onPress={multipleRequestsInSingleCall}
-          >
-            <Text>Multiple Concurrent Requests In Single Call</Text>
-          </TouchableOpacity>
+		  <Text style={styles.subtitle}>
+            Epoch actual: {testEpoch}
+          </Text>
+		  <Text style={styles.subtitle}>
+            Bloque actual: {testBlock}
+          </Text>
+		  <Text style={styles.subtitle}>
+            Bloques acuñados: {testPool}
+          </Text>
+		  <Text style={styles.subtitle}>
+            Active stake: {testPoolHistory}
+          </Text>
         </ScrollView>
-		<View style={{ flex: 1, padding: 24 }}>
-          {isLoading ? (
-            <ActivityIndicator />
-          ) : (
-            <FlatList
-              data={data}
-              keyExtractor={({ id }, index) => id}
-              renderItem={({ item }) => <Text>{item.Title}</Text>}
-            />
-          )}
-        </View>
       </SafeAreaView>
       <Copyrights></Copyrights>
       <StatusBar style={Platform.OS === "ios" ? "dark" : "auto"} />

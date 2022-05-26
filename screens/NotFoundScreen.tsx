@@ -16,6 +16,7 @@ export default function NotFoundScreen({ navigation }: RootStackScreenProps<'Not
       <TouchableOpacity onPress={() => navigation.replace('Root')} style={styles.link}>
         <Text style={styles.linkText}>Go to home screen!</Text>
       </TouchableOpacity>
+	  <Copyrights></Copyrights>
     </View>
   );
 }
