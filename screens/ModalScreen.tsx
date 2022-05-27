@@ -121,12 +121,6 @@ export default function ModalScreen() {
         />
       </View>
 
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      />
-
       <Copyrights></Copyrights>
       <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
       <StatusBar style={Platform.OS === "android" ? "light" : "auto"} />
@@ -147,7 +141,9 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 30,
+	color: "black",
     fontWeight: "bold",
+	backgroundColor: "#eee",
     marginBottom: 10,
     textAlign: "center",
   },
@@ -162,20 +158,23 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   subtitle1: {
-    textAlign: "justify",
     fontSize: 15,
+    color: "black",
     fontWeight: "bold",
+	backgroundColor: "#eee",
+	alignItems: "center",
+    textAlign: "justify",
     justifyContent: "center",
-    marginRight: 10,
-    marginLeft: 10,
-    marginTop: 5,
-    padding: "1%",
+	marginRight: "1%",
+    marginLeft: "1%",
+    marginTop: 10,
     // fontFamily: 'space-mono',
   },
   subtitle2: {
+	  fontSize: 15,
+	  color: "black",
+	  fontWeight: "normal",
     textAlign: "justify",
-    fontSize: 15,
-    fontWeight: "normal",
     // flex: 1,
     backgroundColor: "#eee",
     // alignItems: "center",
@@ -189,6 +188,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+	backgroundColor: "#eee",
   },
 });
 function TabBarIcon(props: {

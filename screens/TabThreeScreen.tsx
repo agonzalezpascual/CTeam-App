@@ -11,11 +11,99 @@ import {
 } from "react-native";
 import { RootTabScreenProps } from "../types";
 import { Linking } from "react-native";
+import { useState } from "react";
+import { useEffect } from "react";
 import React from "react";
 
 export default function TabThreeScreen({
   navigation,
 }: RootTabScreenProps<"StakePool">) {
+  const [isLoading, setLoading] = useState(true);
+
+  const [testADAs, setTestADAs] = useState([]);
+  const [testEpoch, setTestEpoch] = useState([]);
+  const [testBlock, setTestBlock] = useState([]);
+  const [testPool, setTestPool] = useState([]);
+  const [testPoolHistory, setPoolHistory] = useState([]);
+
+  const getADAs = async () => {
+    try {
+      const response = await fetch("https://127.0.0.1:5000/stake");
+      const json = await response.json();
+
+      setTestADAs(json.lovelace);
+    } catch (error) {
+      console.log("error stake");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getEpochs = async () => {
+    try {
+      const response = await fetch("https://127.0.0.1:5000/epoch");
+      const json = await response.json();
+
+      setTestEpoch(json.epoch);
+    } catch (error) {
+      console.log("error epoch");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getBlock = async () => {
+    try {
+      const response = await fetch("https://127.0.0.1:5000/block");
+      const json = await response.json();
+
+      setTestBlock(json.block);
+    } catch (error) {
+      console.log("error block");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getPool = async () => {
+    try {
+      const response = await fetch("https://127.0.0.1:5000/pool");
+      const json = await response.json();
+
+      setTestPool(json.blocks_minted);
+    } catch (error) {
+      console.log("error blocks_minted");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getPoolHistory = async () => {
+    try {
+      const response = await fetch("https://127.0.0.1:5000/poolhistory");
+      const json = await response.json();
+
+      setPoolHistory(json.active_stake);
+    } catch (error) {
+      console.log("error active_stake");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getADAs();
+    getEpochs();
+    getBlock();
+    getPool();
+    getPoolHistory();
+  }, []);
+
   return (
     <View style={styles.container} lightColor="#eee" darkColor="#eee">
       <Image
@@ -105,8 +193,36 @@ export default function TabThreeScreen({
           </Text>
 
           <Text style={styles.subtitle}>
-            RECUERDE comprobar que delega a la Pool correcta: {"\n"}
-            POOL_ID=stake_test1ur37k5awfzjt6q6w5f2w9vsqfhl52zqrhss8uev7z2zf6sqwdrun0
+            <Text style={{color: "black"}}>
+              RECUERDE comprobar que delega a la Pool correcta: {"\n"}POOL_ID=
+            </Text>
+            <Text style={{ fontWeight: "bold", color: "black" }}>
+              stake_test1ur37k5awfzjt6q6w5f2w9vsqfhl52zqrhss8uev7z2zf6sqwdrun0
+            </Text>
+          </Text>
+
+          <Text style={styles.subtitle}>
+          <Text style={{color: "black"}}>TestADAs delegados: </Text>
+            <Text style={{ fontWeight: "bold", color: "black" }}>{testADAs}</Text>
+          </Text>
+
+          <Text style={styles.subtitle}>
+		  <Text style={{color: "black"}}>Epoch actual: </Text>
+            <Text style={{ fontWeight: "bold", color: "black" }}>{testEpoch}</Text>
+          </Text>
+
+          <Text style={styles.subtitle}>
+		  <Text style={{color: "black"}}>Bloque actual: </Text>
+            <Text style={{ fontWeight: "bold", color: "black" }}>{testBlock}</Text>
+          </Text>
+          <Text style={styles.subtitle}>
+		  <Text style={{color: "black"}}>Bloques acuñados: </Text>
+            <Text style={{ fontWeight: "bold", color: "black" }}>{testPool}</Text>
+          </Text>
+
+          <Text style={styles.subtitle}>
+		  <Text style={{color: "black"}}>Active stake: </Text>
+            <Text style={{ fontWeight: "bold", color: "black" }}>{testPoolHistory}</Text>
           </Text>
         </ScrollView>
       </SafeAreaView>
@@ -148,13 +264,14 @@ const styles = StyleSheet.create({
     marginTop: 10,
     flex: 1,
   },
+
   subtitle_link: {
     fontSize: 18,
     fontWeight: "normal",
     color: "blue",
     alignItems: "center",
     justifyContent: "center",
-	marginRight: "1%",
+    marginRight: "1%",
     marginLeft: "2%",
   },
   separator: {

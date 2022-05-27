@@ -1,15 +1,9 @@
 import { Text, TextProps, View } from './Themed';
 import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
-  center: {
-    alignItems: 'center'
-  }
-})
-
 const Question = (props: TextProps) => {
   return(
-    <View style={styles.center}>
+    <View style={styles.center} lightColor="#eee" darkColor="#eee">
       <Text>Hello {props}!</Text>
     </View>
   );
@@ -17,7 +11,20 @@ const Question = (props: TextProps) => {
 
 export function FAQText(props: TextProps) {
   return <Text {...props} style={[props.style, {
-    fontFamily: 'space-mono',
     backgroundColor: "#eee"
   }]} />;
 }
+
+
+const styles = StyleSheet.create({
+	center: {
+		flex: 1,
+		alignItems: "center",
+		justifyContent: "center",
+		paddingTop: "1%",
+	  backgroundColor: "#eee",
+	},
+	scrollView: {
+	  marginHorizontal: 20,
+	},
+  })

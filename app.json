@@ -32,6 +32,7 @@
     "web": {
       "favicon": "./assets/images/favicon.png"
     },
-    "description": ""
+    "description": "",
+    "githubUrl": "https://github.com/cteam-cardano/CTeam-WebApp"
   }
 }
